@@ -51,8 +51,8 @@ export const contact = {
 };
 
 export const navItems = [
-{ label: 'Sortiment', href: '#sortiment' },
 { label: 'Leistungen', href: '#leistungen' },
+{ label: 'Sortiment', href: '#sortiment' },
 { label: 'Angebote', href: '#angebote' },
 { label: 'Über uns', href: '#ueber-uns' },
 { label: 'Kontakt', href: '#kontakt' }];
