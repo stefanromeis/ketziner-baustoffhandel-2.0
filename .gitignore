@@ -1,0 +1,17 @@
+# Abhängigkeiten
+node_modules/
+
+# Build
+dist/
+.astro/
+
+# Lokale Konfiguration
+.env
+.env.*
+!.env.example
+
+# System & Editor
+.DS_Store
+.vscode/
+.idea/
+*.log
