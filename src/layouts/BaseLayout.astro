@@ -14,6 +14,8 @@ interface Props {
 
 const { title, description } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const noindex = import.meta.env.PUBLIC_NOINDEX === 'true';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const socialImage = await getImage({ src: lagerplatz, width: 1200, height: 630, format: 'jpg', fit: 'cover' });
 const socialImageUrl = new URL(socialImage.src, Astro.site);
@@ -24,7 +26,7 @@ const business = {
   '@context': 'https://schema.org',
   '@type': 'HardwareStore',
   name: contact.name,
-  url: Astro.site,
+  url: new URL(base, Astro.site),
   image: socialImageUrl,
   telephone: contact.phoneHref.replace('tel:', ''),
   email: contact.email,
@@ -56,8 +58,9 @@ const business = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="sitemap" href={`${base}sitemap-index.xml`} />
     <meta name="theme-color" content="#121417" />
 
     <meta property="og:type" content="website" />

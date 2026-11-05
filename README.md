@@ -24,3 +24,9 @@ npm run preview  # gebaute Seite lokal ansehen
 - `src/assets/`: Bilder, die beim Build automatisch optimiert werden
 
 Die Domain für Canonical-URL und Sitemap steht in `astro.config.mjs` und `public/robots.txt`.
+
+## Vorschau auf GitHub Pages
+
+Jeder Push auf `main` baut die Seite und veröffentlicht sie unter
+<https://stefanromeis.github.io/ketziner-baustoffhandel-2.0/> (`.github/workflows/deploy.yml`).
+Diese Vorschau ist mit `noindex` markiert und erscheint deshalb nicht in Suchmaschinen.
