@@ -1,6 +1,8 @@
 export const contact = {
   name: 'Ketziner Baustoffhandel Mier',
   street: 'Am Mühlenweg',
+  postalCode: '14669',
+  locality: 'Ketzin/Havel',
   city: '14669 Ketzin/Havel',
   phone: '033233 / 80361',
   phoneHref: 'tel:+493323380361',
@@ -74,11 +76,3 @@ export const footerLinks = [
 { label: 'Datenschutz', href: '#' },
 { label: 'FAQ', href: '#' },
 { label: 'Kunden-Login', href: '#' }];
-
-
-export const images = {
-  hero: "/d155898b-ce02-41ba-b2d5-7c2b3b27c81b.jpg",
-  team: "/f3bd9eec-8898-46d4-add1-6d316900660f.jpg",
-  fleet: "/79708a8b-63a0-4b90-813d-422ff6a0a551.jpg",
-  products: "/3846e41d-1430-4cb4-8ba8-d025b87da71f.jpg"
-};

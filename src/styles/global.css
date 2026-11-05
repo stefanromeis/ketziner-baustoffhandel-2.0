@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* Höhe des Sticky-Headers: Infoleiste 36px + Navigation 68px + Rahmen 1px */
+  scroll-padding-top: 105px;
+}
+
+body {
+  background: #f3f2ee;
+  color: #121417;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-stretch: 78%;
+}
+
+/* Nur das Öffnen ist animiert: Beim Schließen muss der Header sofort seine Endhöhe haben,
+   sonst berechnet der Browser das Sprungziel eines Menülinks mit dem noch offenen Menü. */
+#mobile-nav {
+  transition:
+    opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+    translate 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@starting-style {
+  #mobile-nav:not([hidden]) {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  #mobile-nav {
+    transition: none;
+  }
+}

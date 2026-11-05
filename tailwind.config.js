@@ -1,8 +1,5 @@
 export default {
-  content: [
-  './index.html',
-  './src/**/*.{js,ts,jsx,tsx}'
-],
+  content: ['./src/**/*.{astro,ts}'],
   theme: {
     extend: {
       colors: {
@@ -13,9 +10,9 @@ export default {
         brand: { DEFAULT: '#0094d4', dark: '#0076aa', light: '#d9eef8' },
       },
       fontFamily: {
-        display: ['Archivo', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Archivo Variable', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'system-ui', 'sans-serif'],
       },
     },
   },
-}
+};

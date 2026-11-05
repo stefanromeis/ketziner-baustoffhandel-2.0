@@ -8,7 +8,7 @@ export interface OpenStatus {
 
 type Range = [number, number]; // minutes from midnight
 
-const schedule: Record<number, Range[]> = {
+export const schedule: Record<number, Range[]> = {
   0: [],
   1: [[480, 780], [810, 1020]],
   2: [[480, 780], [810, 1020]],
@@ -52,7 +52,7 @@ export function getOpenStatus(now: Date = new Date()): OpenStatus {
   return { state: 'closed', label: 'Geschlossen', detail: '' };
 }
 
-function formatTime(minutes: number): string {
+export function formatTime(minutes: number): string {
   const h = Math.floor(minutes / 60).toString().padStart(2, '0');
   const m = (minutes % 60).toString().padStart(2, '0');
   return `${h}:${m}`;

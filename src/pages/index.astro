@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import ProductRange from '../components/ProductRange.astro';
+import Services from '../components/Services.astro';
+import OffersBanner from '../components/OffersBanner.astro';
+import AboutTeam from '../components/AboutTeam.astro';
+import ContactSection from '../components/ContactSection.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Ketziner Baustoffhandel Mier | Baustoffe in Ketzin/Havel"
+  description="Baustoffhandel und Handwerkerfachmarkt in Ketzin/Havel: Baumaterial, Werkzeug und Geräte in Markenqualität – mit Beratung und Lieferung bis auf die Baustelle."
+>
+  <SiteHeader />
+  <main>
+    <Hero />
+    <ProductRange />
+    <Services />
+    <OffersBanner />
+    <AboutTeam />
+    <ContactSection />
+  </main>
+  <SiteFooter />
+</BaseLayout>

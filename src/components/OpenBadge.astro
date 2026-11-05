@@ -1,0 +1,32 @@
+---
+// Der Status hängt von der aktuellen Uhrzeit ab und wird deshalb erst im Browser gesetzt.
+---
+
+<span class="inline-flex items-center gap-2" data-open-badge aria-live="polite">
+  <span
+    class="h-2 w-2 rounded-full data-[state=closed]:bg-red-400 data-[state=lunch]:bg-amber-400 data-[state=open]:bg-emerald-400"
+    data-open-dot
+    aria-hidden="true"></span>
+  <span class="font-medium" data-open-label></span>
+  <span class="opacity-70" data-open-detail></span>
+</span>
+
+<script>
+  import { getOpenStatus } from '../utils/openingHours';
+
+  function setText(element: Element | null, text: string) {
+    if (element && element.textContent !== text) element.textContent = text;
+  }
+
+  function render() {
+    const status = getOpenStatus();
+    document.querySelectorAll<HTMLElement>('[data-open-badge]').forEach((badge) => {
+      badge.querySelector<HTMLElement>('[data-open-dot]')?.setAttribute('data-state', status.state);
+      setText(badge.querySelector('[data-open-label]'), status.label);
+      setText(badge.querySelector('[data-open-detail]'), status.detail ? `· ${status.detail}` : '');
+    });
+  }
+
+  render();
+  window.setInterval(render, 60_000);
+</script>

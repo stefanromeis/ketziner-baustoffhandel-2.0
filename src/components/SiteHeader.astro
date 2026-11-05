@@ -1,0 +1,109 @@
+---
+import MapPin from '@lucide/astro/icons/map-pin';
+import Menu from '@lucide/astro/icons/menu';
+import Phone from '@lucide/astro/icons/phone';
+import X from '@lucide/astro/icons/x';
+import Logo from './Logo.astro';
+import OpenBadge from './OpenBadge.astro';
+import { contact, navItems } from '../data/site';
+---
+
+<header class="sticky top-0 z-40">
+  <div class="bg-ink text-[13px] text-white/90">
+    <div class="mx-auto flex h-9 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
+      <OpenBadge />
+      <div class="hidden items-center gap-6 md:flex">
+        <span class="inline-flex items-center gap-1.5 text-white/70">
+          <MapPin class="h-3.5 w-3.5" aria-hidden="true" />
+          {contact.street}, {contact.city}
+        </span>
+        <a href={contact.mobileHref} class="text-white/70 transition-colors duration-150 hover:text-white">
+          Mobil {contact.mobile}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-b border-line bg-paper/95 backdrop-blur">
+    <div class="mx-auto flex h-[68px] max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
+      <Logo />
+
+      <nav aria-label="Hauptnavigation" class="hidden lg:block">
+        <ul class="flex items-center gap-8">
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={item.href} class="text-[15px] font-medium text-ink/80 transition-colors duration-150 hover:text-brand-dark">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a
+          href={contact.phoneHref}
+          class="hidden items-center gap-2 whitespace-nowrap rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-brand-dark sm:inline-flex"
+        >
+          <Phone class="h-4 w-4" aria-hidden="true" />
+          {contact.phone}
+        </a>
+        <button
+          type="button"
+          class="group inline-flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-paper-deep lg:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Menü öffnen"
+          data-menu-toggle
+        >
+          <Menu class="h-5 w-5 group-aria-expanded:hidden" aria-hidden="true" />
+          <X class="hidden h-5 w-5 group-aria-expanded:block" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Mobile Navigation" class="border-t border-line bg-paper px-5 pb-5 lg:hidden" hidden>
+      <ul class="divide-y divide-line">
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href} class="block py-3.5 font-display text-xl font-bold uppercase">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href={contact.phoneHref} class="mt-4 flex items-center justify-center gap-2 rounded-md bg-brand py-3 font-semibold text-white">
+        <Phone class="h-4 w-4" aria-hidden="true" />
+        {contact.phone}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.querySelector<HTMLElement>('#mobile-nav');
+
+  if (toggle && nav) {
+    const setOpen = (open: boolean) => {
+      nav.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    };
+
+    toggle.addEventListener('click', () => setOpen(nav.hasAttribute('hidden')));
+    nav.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !nav.hasAttribute('hidden')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  inverted?: boolean;
+}
+
+const { inverted = false } = Astro.props;
+---
+
+<a href="#top" class="flex items-end gap-2.5" aria-label="Ketziner Baustoffhandel – Startseite">
+  <svg viewBox="0 0 40 40" class="h-9 w-9 shrink-0" aria-hidden="true">
+    <path d="M24 2 L38 30 L10 30 Z" fill="#0094d4"></path>
+    <path d="M2 36 Q20 31 38 33 L38 38 L2 38 Z" fill="#0094d4"></path>
+  </svg>
+  <span class:list={['font-display font-extrabold uppercase leading-[0.9] tracking-tight', inverted ? 'text-white' : 'text-ink']}>
+    <span class="block text-[15px]">Ketziner</span>
+    <span class="block text-[15px]">Baustoffhandel</span>
+  </span>
+</a>
