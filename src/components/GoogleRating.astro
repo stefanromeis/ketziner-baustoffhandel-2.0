@@ -1,0 +1,16 @@
+---
+import Star from '@lucide/astro/icons/star';
+import { contact, googleRating } from '../data/site';
+---
+
+<a
+  href={contact.googlePlaceHref}
+  target="_blank"
+  rel="noreferrer"
+  class="inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm text-ink hover:text-brand-dark"
+>
+  <Star class="h-5 w-5 fill-amber-400 text-amber-400" aria-hidden="true" />
+  <span class="font-semibold">{googleRating.value} von 5</span>
+  <span class="underline">{googleRating.count} Bewertungen auf Google</span>
+  <span class="text-xs text-muted">Stand: {googleRating.asOf}</span>
+</a>

@@ -6,6 +6,7 @@ import X from '@lucide/astro/icons/x';
 import Logo from './Logo.astro';
 import OpenBadge from './OpenBadge.astro';
 import { contact, navItems } from '../data/site';
+import { base } from '../utils/paths';
 ---
 
 <header class="sticky top-0 z-40">
@@ -33,7 +34,7 @@ import { contact, navItems } from '../data/site';
           {
             navItems.map((item) => (
               <li>
-                <a href={item.href} class="text-[15px] font-medium text-ink/80 transition-colors duration-150 hover:text-brand-dark">
+                <a href={`${base}${item.href}`} class="text-[15px] font-medium text-ink/80 transition-colors duration-150 hover:text-brand-dark">
                   {item.label}
                 </a>
               </li>
@@ -69,7 +70,7 @@ import { contact, navItems } from '../data/site';
         {
           navItems.map((item) => (
             <li>
-              <a href={item.href} class="block py-3.5 font-display text-xl font-bold uppercase">
+              <a href={`${base}${item.href}`} class="block py-3.5 font-display text-xl font-bold uppercase">
                 {item.label}
               </a>
             </li>

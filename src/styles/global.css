@@ -18,6 +18,29 @@ body {
   font-stretch: 78%;
 }
 
+/* Rechtstexte */
+.legal h2 {
+  @apply mt-10 font-display text-2xl font-bold uppercase text-ink;
+}
+
+.legal p,
+.legal ul,
+.legal address {
+  @apply mt-3 leading-relaxed text-muted;
+}
+
+.legal address {
+  @apply not-italic;
+}
+
+.legal ul {
+  @apply list-disc pl-5;
+}
+
+.legal a {
+  @apply font-medium text-brand-dark underline;
+}
+
 /* Nur das Öffnen ist animiert: Beim Schließen muss der Header sofort seine Endhöhe haben,
    sonst berechnet der Browser das Sprungziel eines Menülinks mit dem noch offenen Menü. */
 #mobile-nav {

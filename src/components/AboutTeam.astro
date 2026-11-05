@@ -1,38 +1,45 @@
 ---
 import { Image } from 'astro:assets';
+import inhaber from '../assets/inhaber.jpg';
 import team from '../assets/team.jpg';
 import { partners } from '../data/site';
 ---
 
 <section id="ueber-uns" aria-labelledby="about-title" class="bg-paper py-20 lg:py-28">
   <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:items-center lg:px-8">
-    <Image
-      src={team}
-      alt="Das Team des Ketziner Baustoffhandels am Verkaufstresen"
-      widths={[640, 960, 1200]}
-      sizes="(min-width: 1280px) 616px, (min-width: 1024px) 50vw, 100vw"
-      class="aspect-[4/3] w-full rounded-lg object-cover lg:col-span-6"
-    />
+    <div class="grid gap-4 sm:grid-cols-2 lg:col-span-6">
+      <figure>
+        <Image src={team} alt="Drei Teammitglieder des Ketziner Baustoffhandels in Warnjacken am Verkaufstresen" class="aspect-[4/3] w-full rounded-lg object-cover" />
+        <figcaption class="mt-2 text-sm text-muted">Das Team</figcaption>
+      </figure>
+      <figure>
+        <Image src={inhaber} alt="Inhaber Thomas Mier in roter Arbeitskleidung vor dem blauen Kran-LKW" class="aspect-[4/3] w-full rounded-lg object-cover" />
+        <figcaption class="mt-2 text-sm text-muted">Inhaber Thomas Mier</figcaption>
+      </figure>
+    </div>
     <div class="lg:col-span-5 lg:col-start-8">
       <h2 id="about-title" class="font-display text-5xl font-extrabold uppercase leading-[0.9] text-ink">Ihr Team in Ketzin</h2>
       <p class="mt-6 text-lg leading-relaxed text-muted">
-        Als familiengeführter Fachhandel kennen wir unsere Kunden – und ihre Baustellen. Ob Handwerksbetrieb oder Bauherr am
-        Wochenende: Bei uns bekommen Sie ehrliche Beratung und Material, auf das Verlass ist.
+        Seit der Gründung im Jahr 1996 verkaufen wir qualitative Baustoffprodukte. Unser freundliches Team berät Sie kompetent und
+        aus jahrelanger Erfahrung. In unseren Verkaufsräumen finden Heimwerker und Profis ein übersichtliches Sortiment.
       </p>
-      <blockquote class="mt-8 border-l-2 border-brand pl-5">
-        <p class="font-display text-2xl font-bold uppercase leading-tight text-ink">
-          „Kommen Sie vorbei – wir finden die passende Lösung.“
-        </p>
-        <footer class="mt-2 text-sm text-muted">Familie Mier, Inhaber</footer>
-      </blockquote>
+      <p class="mt-8 border-l-2 border-brand pl-5 font-display text-2xl font-bold uppercase leading-tight text-ink">
+        Kommen Sie einfach vorbei oder rufen Sie uns an.
+      </p>
     </div>
   </div>
 
   <div class="mx-auto mt-20 max-w-7xl px-5 lg:px-8">
     <div class="border-t border-line pt-8">
       <h3 class="text-sm font-semibold text-muted">Markenprodukte unserer Partner</h3>
-      <ul class="mt-5 flex flex-wrap items-center gap-x-10 gap-y-4">
-        {partners.map((p) => <li class="font-display text-2xl font-bold uppercase text-ink/45">{p}</li>)}
+      <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {
+          partners.map((p) => (
+            <li class="flex h-24 items-center justify-center rounded-lg bg-white p-4">
+              <Image src={p.logo} alt={p.name} widths={[160, 320]} sizes="160px" class="max-h-full w-auto object-contain" />
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>

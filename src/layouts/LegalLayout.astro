@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+interface Props {
+  title: string;
+  heading: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, heading, description, noindex } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={noindex}>
+  <SiteHeader />
+  <main class="legal mx-auto max-w-3xl px-5 py-16 lg:py-24">
+    <h1 class="font-display text-5xl font-extrabold uppercase leading-[0.9] text-ink">{heading}</h1>
+    <slot />
+  </main>
+  <SiteFooter />
+</BaseLayout>

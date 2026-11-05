@@ -1,55 +1,47 @@
 ---
 import { Image } from 'astro:assets';
-import Download from '@lucide/astro/icons/download';
-import sortiment from '../assets/sortiment.jpg';
-import { productCategories } from '../data/site';
+import Phone from '@lucide/astro/icons/phone';
+import { contact, productCategories } from '../data/site';
 ---
 
 <section id="sortiment" aria-labelledby="sortiment-title" class="bg-paper py-20 lg:py-28">
-  <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
-    <div class="lg:col-span-5">
-      <div class="lg:sticky lg:top-32">
-        <h2 id="sortiment-title" class="font-display text-5xl font-extrabold uppercase leading-[0.9] text-ink">
-          Unser Sortiment
-        </h2>
-        <p class="mt-5 max-w-sm text-muted">
-          Vom Fundament bis zum Dachfirst – alles, was Profis und Bauherren brauchen. Vieles sofort ab Lager.
-        </p>
-        <Image
-          src={sortiment}
-          alt="Porenbetonsteine, Mörtelsäcke und Dämmrollen im Lager"
-          widths={[400, 768]}
-          sizes="(min-width: 640px) 384px, 100vw"
-          class="mt-8 aspect-[4/5] w-full max-w-sm rounded-lg object-cover"
-        />
-      </div>
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+      <h2 id="sortiment-title" class="font-display text-5xl font-extrabold uppercase leading-[0.9] text-ink lg:col-span-6">
+        Unser Sortiment
+      </h2>
+      <p class="max-w-md text-muted lg:col-span-5 lg:col-start-8">
+        Vom Fundament bis zum Dachfirst: ein übersichtliches Sortiment für Heimwerker und Profis. Fragen zu einer Produktgruppe?
+        Rufen Sie uns an unter <a href={contact.phoneHref} class="whitespace-nowrap font-semibold text-ink hover:text-brand-dark">{contact.phone}</a>.
+      </p>
     </div>
 
-    <div class="lg:col-span-7">
-      <ul class="border-t border-ink">
-        {
-          productCategories.map((cat) => (
-            <li class="grid items-baseline gap-x-8 gap-y-1 border-b border-line py-6 sm:grid-cols-[15rem_1fr]">
-              <h3 class="font-display text-2xl font-bold uppercase text-ink">{cat.name}</h3>
-              <p class="text-[15px] text-muted">{cat.examples}</p>
-            </li>
-          ))
-        }
-      </ul>
+    <ul class="mt-12 grid gap-x-8 border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
+      {
+        productCategories.map((cat) => (
+          <li class="flex gap-4 border-b border-line py-5">
+            <Image src={cat.image} alt={`${cat.name} beim Ketziner Baustoffhandel`} widths={[112, 200]} sizes="112px" class="h-[84px] w-28 shrink-0 rounded bg-white object-contain" />
+            <div>
+              <h3 class="font-display text-xl font-bold uppercase leading-tight text-ink">{cat.name}</h3>
+              <p class="mt-1 text-sm leading-snug text-muted">{cat.examples}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
 
-      <div class="mt-10 flex flex-col gap-4 rounded-lg bg-paper-deep p-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p class="font-semibold text-ink">Aktuelle Preisliste</p>
-          <p class="text-sm text-muted">Alle Standardartikel mit Preisen als PDF.</p>
-        </div>
-        <a
-          href="#"
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors duration-150 hover:bg-ink-soft"
-        >
-          <Download class="h-4 w-4" aria-hidden="true" />
-          Preisliste laden
-        </a>
+    <div class="mt-10 flex flex-col gap-4 rounded-lg bg-paper-deep p-6 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="font-semibold text-ink">Preise und Lieferung</p>
+        <p class="text-sm text-muted">Sagen Sie uns, was Sie brauchen. Wir nennen Ihnen Preis und Liefertermin.</p>
       </div>
+      <a
+        href={contact.phoneHref}
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors duration-150 hover:bg-ink-soft"
+      >
+        <Phone class="h-4 w-4" aria-hidden="true" />
+        {contact.phone}
+      </a>
     </div>
   </div>
 </section>

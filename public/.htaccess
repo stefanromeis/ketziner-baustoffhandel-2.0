@@ -1,0 +1,20 @@
+# Alte Adressen der bisherigen Website dauerhaft auf die neuen Stellen umleiten
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^ketzinerbaustoffhandel\.de$ [NC]
+RewriteRule ^(.*)$ https://www.ketzinerbaustoffhandel.de/$1 [R=301,L]
+
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^about\.php$ /#ueber-uns [R=301,NE,L]
+RewriteRule ^partner\.php$ /#ueber-uns [R=301,NE,L]
+RewriteRule ^fuhrpark\.php$ /#leistungen [R=301,NE,L]
+RewriteRule ^leistungen\.php$ /#leistungen [R=301,NE,L]
+RewriteRule ^produkte\.php$ /#sortiment [R=301,NE,L]
+RewriteRule ^preisliste\.php$ /#sortiment [R=301,NE,L]
+RewriteRule ^angebote\.php$ /#angebote [R=301,NE,L]
+RewriteRule ^kontakt\.php$ /#kontakt [R=301,NE,L]
+RewriteRule ^kontaktformular\.php$ /#kontakt [R=301,NE,L]
+RewriteRule ^impressum\.php$ /impressum/ [R=301,L]
+RewriteRule ^(faq|jobs|login|zeiten)\.php$ / [R=301,L]
+
+ErrorDocument 404 /404.html

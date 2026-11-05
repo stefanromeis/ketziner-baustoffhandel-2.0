@@ -2,23 +2,22 @@
 import '@fontsource-variable/archivo/standard.css';
 import '@fontsource-variable/inter/index.css';
 import '../styles/global.css';
-import { getImage } from 'astro:assets';
-import lagerplatz from '../assets/lagerplatz.jpg';
-import { contact } from '../data/site';
+import social from '../assets/social.jpg';
+import { contact, productCategories } from '../data/site';
 import { formatTime, schedule } from '../utils/openingHours';
+import { base } from '../utils/paths';
 
 interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex: pageNoindex = false } = Astro.props;
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const noindex = import.meta.env.PUBLIC_NOINDEX === 'true';
+const noindex = pageNoindex || import.meta.env.PUBLIC_NOINDEX === 'true';
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const socialImage = await getImage({ src: lagerplatz, width: 1200, height: 630, format: 'jpg', fit: 'cover' });
-const socialImageUrl = new URL(socialImage.src, Astro.site);
+const socialImageUrl = new URL(social.src, Astro.site);
 
 const schemaDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -26,9 +25,11 @@ const business = {
   '@context': 'https://schema.org',
   '@type': 'HardwareStore',
   name: contact.name,
+  alternateName: ['Ketziner Baustoffhandel', 'Ketziner-Baustoffhandel'],
   url: new URL(base, Astro.site),
   image: socialImageUrl,
   telephone: contact.phoneHref.replace('tel:', ''),
+  faxNumber: '+49 33233 746287',
   email: contact.email,
   address: {
     '@type': 'PostalAddress',
@@ -38,7 +39,19 @@ const business = {
     addressRegion: 'Brandenburg',
     addressCountry: 'DE',
   },
+  geo: { '@type': 'GeoCoordinates', latitude: contact.lat, longitude: contact.lng },
+  hasMap: contact.googlePlaceHref,
+  foundingDate: '1996',
   areaServed: 'Havelland',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Sortiment',
+    itemListElement: productCategories.map((category) => ({
+      '@type': 'OfferCatalog',
+      name: category.name,
+      description: category.examples,
+    })),
+  },
   openingHoursSpecification: Object.entries(schedule).flatMap(([day, ranges]) =>
     ranges.map(([opens, closes]) => ({
       '@type': 'OpeningHoursSpecification',

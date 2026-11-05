@@ -1,4 +1,7 @@
 ---
+import logo from '../data/logo.json';
+import { base } from '../utils/paths';
+
 interface Props {
   inverted?: boolean;
 }
@@ -6,13 +9,12 @@ interface Props {
 const { inverted = false } = Astro.props;
 ---
 
-<a href="#top" class="flex items-end gap-2.5" aria-label="Ketziner Baustoffhandel – Startseite">
-  <svg viewBox="0 0 40 40" class="h-9 w-9 shrink-0" aria-hidden="true">
-    <path d="M24 2 L38 30 L10 30 Z" fill="#0094d4"></path>
-    <path d="M2 36 Q20 31 38 33 L38 38 L2 38 Z" fill="#0094d4"></path>
+<a href={`${base}#top`} class="block shrink-0" aria-label="Ketziner Baustoffhandel – Startseite">
+  <svg viewBox={logo.viewBox} class="h-14 w-auto" aria-hidden="true">
+    <path d={logo.sail} fill={logo.color}></path>
+    <path d={logo.wave} fill={logo.color}></path>
+    <g fill={inverted ? '#ffffff' : '#121417'}>
+      {logo.lines.map((line) => <path transform={line.tr} d={line.d}></path>)}
+    </g>
   </svg>
-  <span class:list={['font-display font-extrabold uppercase leading-[0.9] tracking-tight', inverted ? 'text-white' : 'text-ink']}>
-    <span class="block text-[15px]">Ketziner</span>
-    <span class="block text-[15px]">Baustoffhandel</span>
-  </span>
 </a>

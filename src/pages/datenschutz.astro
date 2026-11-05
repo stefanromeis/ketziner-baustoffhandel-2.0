@@ -1,0 +1,65 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contact } from '../data/site';
+---
+
+<LegalLayout
+  title="Datenschutz | Ketziner Baustoffhandel Mier"
+  heading="Datenschutz"
+  description="Datenschutzerklärung des Ketziner Baustoffhandels in Ketzin/Havel: welche Daten beim Besuch dieser Website verarbeitet werden."
+>
+  <h2>Verantwortlicher</h2>
+  <address>
+    Ketziner Baustoffhandel, Inh. {contact.owner}<br />
+    {contact.street}, {contact.city}<br />
+    Telefon: {contact.phone}<br />
+    E-Mail: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+  </address>
+
+  <h2>Zugriffsdaten</h2>
+  <p>
+    Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter aufgrund unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO)
+    technisch notwendige Zugriffsdaten als Server-Logfiles, um die Seite auszuliefern und Missbrauch aufzuklären:
+  </p>
+  <ul>
+    <li>besuchte Seite und Uhrzeit des Zugriffs</li>
+    <li>Menge der gesendeten Daten</li>
+    <li>Quelle bzw. Verweis, von dem Sie auf die Seite gelangten</li>
+    <li>verwendeter Browser und verwendetes Betriebssystem</li>
+    <li>IP-Adresse</li>
+  </ul>
+
+  <h2>Cookies und Reichweitenmessung</h2>
+  <p>
+    Diese Website selbst setzt keine Cookies und verwendet keine Reichweitenmessung. Die Schriften werden von unserem eigenen Server
+    geladen.
+  </p>
+
+  <h2>Kontaktaufnahme</h2>
+  <p>
+    Wenn Sie uns per E-Mail oder Telefon kontaktieren, verwenden wir Ihre Angaben, um Ihre Anfrage zu bearbeiten. Ohne Ihre Einwilligung
+    geben wir sie nicht an Dritte weiter.
+  </p>
+
+  <h2>Karte von OpenStreetMap</h2>
+  <p>
+    Im Kontaktbereich ist eine Karte von OpenStreetMap eingebunden. Beim Laden der Karte wird Ihre IP-Adresse an die Server der
+    OpenStreetMap Foundation übertragen. Grundlage ist unser berechtigtes Interesse, Ihnen die Anfahrt zu zeigen (Art. 6 Abs. 1 lit. f
+    DSGVO). Mehr dazu in der
+    <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noreferrer">Datenschutzerklärung der OpenStreetMap Foundation</a>.
+  </p>
+
+  <h2>Links zu Google Maps</h2>
+  <p>
+    Die Links zur Routenplanung und zu unseren Bewertungen führen zu Google Maps. Daten werden erst an Google übertragen, wenn Sie einen
+    dieser Links anklicken. Dann gilt die
+    <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">Datenschutzerklärung von Google</a>.
+  </p>
+
+  <h2>Ihre Rechte</h2>
+  <p>
+    Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten, auf
+    Datenübertragbarkeit sowie auf Widerspruch gegen die Verarbeitung. Wenden Sie sich dazu an
+    <a href={`mailto:${contact.email}`}>{contact.email}</a>. Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren.
+  </p>
+</LegalLayout>

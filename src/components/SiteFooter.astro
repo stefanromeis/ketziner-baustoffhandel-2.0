@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { contact, footerLinks } from '../data/site';
+import { base } from '../utils/paths';
 ---
 
 <footer class="bg-ink text-white">
@@ -16,7 +17,7 @@ import { contact, footerLinks } from '../data/site';
         {
           footerLinks.map((l) => (
             <li>
-              <a href={l.href} class="text-white/70 transition-colors duration-150 hover:text-white">
+              <a href={`${base}${l.href}`} class="text-white/70 transition-colors duration-150 hover:text-white">
                 {l.label}
               </a>
             </li>
@@ -27,7 +28,7 @@ import { contact, footerLinks } from '../data/site';
   </div>
   <div class="border-t border-ink-line">
     <p class="mx-auto max-w-7xl px-5 py-5 text-xs text-white/50 lg:px-8">
-      © <span data-current-year>{new Date().getFullYear()}</span>
+      © <span data-current-year>{new Date().getFullYear()}</span>{' '}
       {contact.name}
     </p>
   </div>

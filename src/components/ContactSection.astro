@@ -1,9 +1,12 @@
 ---
+import Map from '@lucide/astro/icons/map';
 import Mail from '@lucide/astro/icons/mail';
 import Navigation from '@lucide/astro/icons/navigation';
 import Phone from '@lucide/astro/icons/phone';
 import Smartphone from '@lucide/astro/icons/smartphone';
+import GoogleRating from './GoogleRating.astro';
 import OpenBadge from './OpenBadge.astro';
+import anfahrtsskizze from '../assets/anfahrtsskizze.jpg';
 import { contact, openingHours } from '../data/site';
 ---
 
@@ -18,6 +21,10 @@ import { contact, openingHours } from '../data/site';
         <br />
         {contact.city}
       </address>
+
+      <div class="mt-6">
+        <GoogleRating />
+      </div>
 
       <ul class="mt-8 space-y-3">
         <li>
@@ -71,19 +78,25 @@ import { contact, openingHours } from '../data/site';
       <div class="relative min-h-[380px] flex-1 overflow-hidden rounded-lg border border-line bg-paper">
         <iframe
           title="Karte: Ketziner Baustoffhandel, Am Mühlenweg, Ketzin"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=12.825%2C52.466%2C12.866%2C52.484&layer=mapnik&marker=52.4747%2C12.8456"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=12.833%2C52.471%2C12.874%2C52.489&layer=mapnik&marker=52.4797413%2C12.8537046"
           class="absolute inset-0 h-full w-full grayscale-[30%]"
           loading="lazy"></iframe>
       </div>
-      <a
-        href={contact.mapsHref}
-        target="_blank"
-        rel="noreferrer"
-        class="mt-4 inline-flex items-center gap-2 self-start font-semibold text-ink hover:text-brand-dark"
-      >
-        <Navigation class="h-4 w-4" aria-hidden="true" />
-        Route planen
-      </a>
+      <div class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+        <a
+          href={contact.mapsHref}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center gap-2 font-semibold text-ink hover:text-brand-dark"
+        >
+          <Navigation class="h-4 w-4" aria-hidden="true" />
+          Route mit Google Maps
+        </a>
+        <a href={anfahrtsskizze.src} target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-semibold text-ink hover:text-brand-dark">
+          <Map class="h-4 w-4" aria-hidden="true" />
+          Anfahrtsskizze
+        </a>
+      </div>
     </div>
   </div>
 </section>
