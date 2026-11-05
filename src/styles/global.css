@@ -4,8 +4,8 @@
 
 html {
   scroll-behavior: smooth;
-  /* Höhe des Sticky-Headers: Infoleiste 36px + Navigation 68px + Rahmen 1px */
-  scroll-padding-top: 105px;
+  /* Höhe des Sticky-Headers: Infoleiste 36px + Navigation 76px + Rahmen 1px */
+  scroll-padding-top: 113px;
 }
 
 body {
